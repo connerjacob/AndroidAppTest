@@ -1,0 +1,225 @@
+\documentclass[12pt]{article}
+\usepackage{times} 			% use Times New Roman font
+
+\usepackage[margin=1in]{geometry}   % sets 1 inch margins on all sides
+\usepackage{hyperref}               % for URL formatting
+\usepackage[pdftex]{graphicx}       % So includegraphics will work
+\setlength{\parskip}{1em}           % skip 1em between paragraphs
+\usepackage{indentfirst}            % indent the first line of each paragraph
+\usepackage{datetime}
+\usepackage[small, bf]{caption}
+\usepackage{listings}               % for code listings
+\usepackage{xcolor}                 % for styling code
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage{csvsimple}
+
+%New colors defined below
+\definecolor{backcolour}{RGB}{246, 246, 246}   % 0xF6, 0xF6, 0xF6
+\definecolor{codegreen}{RGB}{16, 124, 2}       % 0x10, 0x7C, 0x02
+\definecolor{codepurple}{RGB}{170, 0, 217}     % 0xAA, 0x00, 0xD9
+\definecolor{codered}{RGB}{154, 0, 18}         % 0x9A, 0x00, 0x12
+
+%Code listing style named "gcolabstyle" - matches Google Colab
+\lstdefinestyle{gcolabstyle}{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\itshape\color{codegreen},
+  keywordstyle=\color{codepurple},
+  stringstyle=\color{codered},
+  numberstyle=\ttfamily\footnotesize\color{darkgray}, 
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=gcolabstyle}      %set gcolabstyle code listing
+
+% for fancy page headings
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt} % to remove fancyhdr warning
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small \thepage}
+\lhead{\small Android Template Code}  % EDIT THIS
+\chead{\small Documentation on JetPack Compose and RoomDatabase Design Practices} 
+
+%-------------------------------------------------------------------------
+\begin{document}
+
+\begin{centering}
+{\large\textbf{Android Template Code}}\\ % EDIT THIS
+                                % REPLACE # with HW num and ADD title
+Jacob Conner\\                     % EDIT THIS
+September 22, 2021\\                      % EDIT THIS
+\end{centering}
+
+%-------------------------------------------------------------------------
+\tableofcontents
+
+% The * after \section just says to not number the sections
+\section{Gradle}
+This section examines the build.gradle files in the Project and App folders and the project Build.settings files. 
+\newpage
+\subsection{ProjectBuildGradle}
+\lstinputlisting[language=Java, caption=Project build.gradle file, label={lst:projectBuildGradle}]{build.gradle}
+All Android projects consist of at least two \textit{build.gradle} files, a project level \textit{build.gradle} file and an application level \textit{build.gradle} file. The project level \textit{build.gradle} file is shown in Listing  \ref{lst:projectBuildGradle}. Generally this 
+\textit{build.gradle} file contains a \verb|buildscript| tag that has a number of subsections. The section mostly likely to be 
+editted is the \verb|ext| section. In this section gradle environment variables can be defined particularly to keep track 
+of versions of various dependencies. In this example the \verb|compose_version| variable is defined with \verb|compose_version = '1.0.1'|. Dependencies can be defined in this section but generally should be defined using the application level \textit{build.gradle} file. 
+
+\newpage
+
+\subsection{AppBuildGradle}
+\lstinputlisting[language=Java, caption=App build.gradle file, label={lst:appBuildGradle}]{app/build.gradle}
+This app-level  \textit{build.gradle} file is used to define the various plugins, application dependencies and gradle scripts pertinent to the application. In the example file in Listing \ref{lst:appBuildGradle} the file starts with plugins section. The plugins section consists of four plugins.:
+\begin{itemize}
+    \item com.android.application
+    \item kotlin-android
+    \item Kapt plugin - kotlin-kapt
+    \item Dokka plugin - org.jetbrains.dokka
+\end{itemize}
+\verb|com.android.application| and \verb|kotlin-android| are all included in the application by default. This example has added the plugin \verb|kotlin-kapt| to enable the program to load the room compiler dependency using the kapt command. The dokka plugin needed to create documentation using KDoc is added with the \verb|id("org.jetbrains.dokka") version "1.4.0"|.
+Various gradle tasks should be added in the application gradle file. 
+\begin{lstlisting}[numbers=none, 
+			caption=Task to generate Dokka documentation,
+			label={lst:dokkatask}]
+tasks.named("dokkaHtml"){
+	outputDirectory.set(buildDir.resolve("dokka"))
+\end{lstlisting}
+The task to generate dokka documentation is defined using the code in Listing \ref{lst:dokkatask} . Gradle documentation can be created using the terminal with the command \verb|gradlew dokkaHtml|. Dokka will then parse all KDoc comment lines in Kotlin classes and generate the documentation in the build/dokka folder. 
+
+Dependencies are stored in the dependencies section of the gradle file. When a new empty compose application is created, a number of compose dependencies are included as well as various testing frameworks. The Jetpack compose navigation library and the jetpack compose lifecycle libraries are not included by default but are present in the example app \textit{build.gradle} file. The project also makes use of RoomDatabase library so those libraries are included. In order to allow for the downloading and display of images from the internet the \verb|io.coil-kt:coil-compose| library is included. 
+
+
+\newpage
+\section{AndroidManifest}
+\lstinputlisting[language=xml, caption=Android Manifests File, label={lst:androidXML}]{app/src/main/AndroidManifest.xml}
+The android manifests file shown in \ref{lst:androidXML} provides information about the various permissions in the application. 
+
+\begin{lstlisting}[numbers=none, 
+			caption=Line to give permission to allow internet access,
+			label={lst:internetPermission}]
+<uses-permission android:name="android.permission.INTERNET" />
+\end{lstlisting}
+
+\begin{lstlisting}[numbers=none, 
+			caption=Line to give permission to allow network access,
+			label={lst:networkPermission}]
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+\end{lstlisting}
+The most common reason to edit this file is when an application needs to have access to a website or other resource. Internet access is enabled with the line shown in Listing \ref{lst:internetPermission}.
+Network access is also needed to allow the application to access the web, and this is enabled with the line in Listing \ref{lst:networkPermission}.
+
+
+\newpage
+
+\section{RoomDatabase}
+The RoomDatabase library is an object relational mapping (ORM) library in Android that serves as a layer for SQLite queries \cite{GoogleRoomDB} .
+\subsection{Dependencies}
+The implementations are briefly discussed in Section \ref{lst:appBuildGradle}, but a list of the required implementations in the \textit{build.gradle} file are listed below. 
+
+\begin{itemize}
+\item RoomDatabase Libraries \begin{itemize}
+    \item implementation "androidx.room:room-runtime:\$room\_version"
+    \item annotationProcessor "androidx.room:room-compiler:\$room\_version"
+    \item implementation "androidx.room:room-ktx:2.3.0"
+    \item kapt "androidx.room:room-compiler:2.3.0"
+    \end{itemize}
+ \item Lifecycle Libraries \begin{itemize}
+    \item implementation "androidx.compose.runtime:runtime-livedata:\$compose\_version"
+    \item implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    \end{itemize}
+\end{itemize}
+ \newpage
+ 
+ \subsection{Entities}
+The lowest level of RoomDatabase is the entity or data model. An entity is simply a data class that describes the schema for a time using Room annotations. The contents of each entity should correspond to the columns of a single SQLite table. 
+\lstinputlisting[language=Java, caption=Example entity class, label={lst:exampleEntity}]{app/src/main/java/com/example/roomandapi/entity/TeamMember.kt}
+
+In Listing \ref{lst:exampleEntity}, an example entity class \verb|TeamMember| is provided for a table called team that stores information about members of a team. In this class, the first Room notation encountered is the \verb|@Entity|notation. This notation is called before the data class is defined and is used to help the Room library identify where this model's data will reside in the SQLite database. In this case the table is called \verb|Team| but the data class is called \verb|TeamMember|. 
+Next the data class is created using the \verb|data class <nameOfClass>( <contents>)|. It is important to note that a data class in Kotlin does not contain any methods and is simply defined with the parameters using the parentheses that initialize it. 
+
+The next annotation used in this example class is \verb|@PrimaryKey|. This annotation is used to define the column below as a primary key for the table, which means it has to be unique and cannot be null. The notation also has the possible parameter of \verb|(autoGenerate = true)| which advises SQLite to autoincrement that column. 
+The last annotation in the example entity class is \verb|@ColumnInfo| which is used to define the name of the table column using the parameter \verb|name="<nameOfColumn>"|. Once the column name has been defined, a variable in kotlin is created for the model which is tied to the table column set. This process is repeated for all columns needed in the table and each column is separated by commas (","). 
+ 
+\subsection{DAO}
+Once an entity has been created, a data abstraction object (DAO) has to be created. This is an interface for the entity that maps SQL queries to various methods that can be called. 
+\lstinputlisting[language=Java, caption=Example DAO, label={lst:exampleDAO}]{app/src/main/java/com/example/roomandapi/dao/TeamMemberDAO.kt}
+
+An example of an DAO interface is shown in Listing \ref{lst:exampleDAO}. In this file, the interface is annotated as a DAO with the \verb|@DAO| annotation. After the interface header is created with \verb|interface <nameOfDAO>| the various SQL methods are defined with an annotation followed by a method. The first type of SQL Query annotation is \verb|@Query\verb. This annotation takes a SQL query as a parameter.  Then immediately below it, a function is defined that will handle that query and return either an entity or a list of some sort. The \verb|@Query\verb supports parameterized sql queries as shown in the \verb|getById function| and the parameter in the query is used as a parameter in the method tied to that query. 
+Room provides a few SQL query annotations that do not require you to specifically type out the SQL query. The \verb|@Insert| annotation takes a list of entities and inserts them into a database using the method below. The option parameter \verb|onConflict = OnConflictStrategy.REPLACE| allows you to specify the conflict strategy with foreign key constraints when a value is inserted.  The \verb|@Update| annotation is used to create an update query where an entity is provided and the values of the entity are used to update the value of the entity in the database. The  annotation  \verb|@Delete|  writes the query to delete the entity in the database that matches the entity provided in the method. 
+
+\subsection{Repository}
+\lstinputlisting[language=Java, caption=Example repository class, label={lst:exampleRepo}]{app/src/main/java/com/example/roomandapi/repository/TeamMemberRepository.kt}
+
+\subsection{Database}
+\lstinputlisting[language=Java, caption=Example database class, label={lst:exampleDB}]{app/src/main/java/com/example/roomandapi/database/WCDatabase.kt}
+
+\subsection{ViewModel}
+\lstinputlisting[language=Java, caption=Example ViewModel class, label={lst:exampleViewModel}]{app/src/main/java/com/example/roomandapi/viewmodel/TeamMemberViewModel.kt}
+
+\section{JetPack Compose}
+
+\subsection{Navigation}
+\lstinputlisting[language=Java, caption=Example database class, label={lst:exampleNavView}]{app/src/main/java/com/example/roomandapi/views/MainView.kt}
+
+
+\begin{lstlisting}[numbers=none, 
+			caption=Function to create a simple Nav Controller,
+			label={lst:navControllerFunction}]
+@Composable
+fun appNavController() {
+
+    val navController = rememberNavController()
+    //default destination
+    NavHost(navController, startDestination = "nameOfDefaultRoute") {
+    	//list routes
+        composable(route = "<nameOfFirstRoute>") {
+        	    //viewToLoad
+	    firstView(navController)
+        }
+        
+        composable(route = "<nameOfSecondRoute>") {
+	    secondView(navController)
+        }
+    }
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[numbers=none, 
+			caption=Button to navigate to a view,
+			label={lst:navButton}]
+Button(onClick = { navController.navigate("<routeToNavigateTo") }) {
+                //Label for button
+                Text("Name of Button")
+            }
+}
+\end{lstlisting}
+
+\section{Documenting with Dokka}
+test
+%referred to https://tex.stackexchange.com/questions/334899/space-between-words-in-bibliography for pacing
+% referred to https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex for bibtext
+\begin{appendix}
+  \listoffigures
+  \listoftables
+  \lstlistoflistings
+  %\bibliographystyle{elsarticle-num} 
+
+\end{appendix}
+ % \RaggedRight
+  %\bibliographystyle{unsrt}
+  \bibliography{references}
+
+
+\end{document}
