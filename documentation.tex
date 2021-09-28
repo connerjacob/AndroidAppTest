@@ -12,8 +12,9 @@
 \usepackage{xcolor}                 % for styling code
 \usepackage{multirow}
 \usepackage{float}
-\usepackage{ragged2e}
 \usepackage{csvsimple}
+\usepackage{ragged2e}
+\usepackage{cite}
 
 %New colors defined below
 \definecolor{backcolour}{RGB}{246, 246, 246}   % 0xF6, 0xF6, 0xF6
@@ -281,16 +282,17 @@ Since every test is going to have to close the databse, the \verb|@After| annota
    \begin{lstlisting}[numbers=none, 
 			caption=Example Test for Room Database,
 			label={lst:example_room_test}]
- @Test
+    @Test
     fun TestWriteAndReadUser() = runBlocking(){
         val members: List<TeamMember> =  listOf(
             TeamMember(1,
             "Jacob",
             "Conner",
-            "Jacob Conner is a senior at Old Dominion University majoring in Computer Science. Currently, he lives in Blacksburg, Virginia, and works in a chat-based technical support role for Dish Network. Some of his hobbies include archaeology, learning Japanese and browsing Linkedin Learning.")
+            "Jacob Conner is a senior at Old Dominion University majoring in Computer Science. Currently, he lives in Blacksburg, Virginia, and works in a chat-based technical support role for Dish Network. Some of his hobbies include archaeology, learning Japanese and browsing Linkedin Learning.",
+            "https://www.cs.odu.edu/~cpi/old/410/silvers21/bio/Jacob_Conner.jpg")
         )
-        dao.insert()
-        val byName = dao.getByName("Jacob", "Conner")
+        dao.insert(members)
+        val byName: TeamMember = dao.getByName("Jacob", "Conner")
         MatcherAssert.assertThat(byName, CoreMatchers.equalTo(members[0]))
     }
 \end{lstlisting}
@@ -350,12 +352,9 @@ test
   \listoffigures
   \listoftables
   \lstlistoflistings
-  %\bibliographystyle{elsarticle-num} 
 
 \end{appendix}
- % \RaggedRight
-  %\bibliographystyle{unsrt}
-  \bibliography{references}
-
-
+\RaggedRight
+\bibliography{references}{}
+ \bibliographystyle{elsarticle-num} 
 \end{document}

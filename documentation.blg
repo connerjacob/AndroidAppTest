@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: documentation.aux
+The style file: elsarticle-num.bst
+Database file #1: references.bib
+Warning--empty year in GoogleRoomDB
+Warning--empty year in MakeItEasyRoom1
+Warning--empty year in MakeItEasyRoom2
+Warning--empty year in RoomCodeLab
+Warning--empty year in kotlinCoroutines
+Warning--empty year in roomDBMethods
+Warning--empty year in SqliteDataTypes
+Warning--empty year in RoomDBTypeConverters
+Warning--empty year in DateTimeFormatterDocs
+Warning--empty year in AndroidTestingFundamentals
+Warning--empty year in SimplifiedCodingRoomTesting
+Warning--empty year in mediumJetpackNavigation
+Warning--empty year in NavigationCodeLab
+You've used 13 entries,
+            2952 wiz_defined-function locations,
+            731 strings with 6951 characters,
+and the built_in function-call counts, 2830 in all, are:
+= -- 247
+> -- 52
+< -- 0
++ -- 26
+- -- 13
+* -- 158
+:= -- 365
+add.period$ -- 13
+call.type$ -- 13
+change.case$ -- 26
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 117
+empty$ -- 391
+format.name$ -- 13
+if$ -- 768
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 0
+newline$ -- 60
+num.names$ -- 13
+pop$ -- 143
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 181
+stack$ -- 0
+substring$ -- 26
+swap$ -- 13
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 13
+while$ -- 13
+width$ -- 15
+write$ -- 111
+(There were 13 warnings)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 01:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 17:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -352,29 +352,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box50
 )
-(/usr/local/texlive/2021/texmf-dist/tex/latex/ragged2e/ragged2e.sty
-Package: ragged2e 2021/02/05 v3.0 ragged2e Package
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/everysel/everysel.sty
-Package: everysel 2021/01/20 v2.1 EverySelectfont Package (MS)
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/everysel/everysel-2011-10-28.sty)
-)
-\CenteringLeftskip=\skip52
-\RaggedLeftLeftskip=\skip53
-\RaggedRightLeftskip=\skip54
-\CenteringRightskip=\skip55
-\RaggedLeftRightskip=\skip56
-\RaggedRightRightskip=\skip57
-\CenteringParfillskip=\skip58
-\RaggedLeftParfillskip=\skip59
-\RaggedRightParfillskip=\skip60
-\JustifyingParfillskip=\skip61
-\CenteringParindent=\skip62
-\RaggedLeftParindent=\skip63
-\RaggedRightParindent=\skip64
-\JustifyingParindent=\skip65
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/csvsimple/csvsimple.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/csvsimple/csvsimple.sty
 Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -410,6 +388,33 @@ Package shellesc Info: Restricted shell escape enabled on input line 77.
 \c@csvcol=\count307
 \csv@out=\write3
 )
+(/usr/local/texlive/2021/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2021/02/05 v3.0 ragged2e Package
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/everysel/everysel.sty
+Package: everysel 2021/01/20 v2.1 EverySelectfont Package (MS)
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/everysel/everysel-2011-10-28.sty)
+)
+\CenteringLeftskip=\skip52
+\RaggedLeftLeftskip=\skip53
+\RaggedRightLeftskip=\skip54
+\CenteringRightskip=\skip55
+\RaggedLeftRightskip=\skip56
+\RaggedRightRightskip=\skip57
+\CenteringParfillskip=\skip58
+\RaggedLeftParfillskip=\skip59
+\RaggedRightParfillskip=\skip60
+\JustifyingParfillskip=\skip61
+\CenteringParindent=\skip62
+\RaggedLeftParindent=\skip63
+\RaggedRightParindent=\skip64
+\JustifyingParindent=\skip65
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
 rs
@@ -424,7 +429,7 @@ rs
 \f@nch@O@orf=\skip74
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
-6.
+7.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -437,24 +442,24 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 (./documentation.aux)
 \openout1 = `documentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -490,7 +495,7 @@ LaTeX Font Info:    ... okay on input line 56.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 56.
+Package hyperref Info: Link coloring OFF on input line 57.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -503,9 +508,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count309
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
  (./documentation.out) (./documentation.out)
 \@outlinefile=\write4
 \openout4 = `documentation.out'.
@@ -543,7 +548,7 @@ Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count316
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 56.
+LaTeX Info: Redefining \selectfont on input line 57.
  (./documentation.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
@@ -562,9 +567,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 73.
+nput line 74.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
-3.
+4.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -579,7 +584,7 @@ LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 6
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 ) [5])
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
-5.
+6.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
@@ -590,133 +595,74 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
-(./app/src/main/AndroidManifest.xml) [7]
-
-LaTeX Warning: Citation `GoogleRoomDB' on page 8 undefined on input line 127.
-
-[8]
-
-LaTeX Warning: Citation `MakeItEasyRoom1' on page 9 undefined on input line 145
-.
-
-
-LaTeX Warning: Citation `MakeItEasyRoom2' on page 9 undefined on input line 145
-.
-
-
-LaTeX Warning: Citation `RoomCodeLab' on page 9 undefined on input line 145.
-
+(./app/src/main/AndroidManifest.xml) [7] [8]
 (./app/src/main/java/com/example/roomandapi/entity/TeamMember.kt) [9]
-(./app/src/main/java/com/example/roomandapi/dao/TeamMemberDAO.kt)
-Overfull \hbox (31.12044pt too wide) in paragraph at lines 160--162
+(./app/src/main/java/com/example/roomandapi/dao/TeamMemberDAO.kt) [10]
+Overfull \hbox (31.12044pt too wide) in paragraph at lines 161--163
 \OT1/ptm/m/n/12 DAO with the [][]\OT1/pcr/m/n/12 @DAO []\OT1/ptm/m/n/12 an-no-t
 a-tion. Af-ter the in-ter-face header is cre-ated with [][]\OT1/pcr/m/n/12 inte
 rface <nameOfDAO>
  []
 
 
-Overfull \hbox (1189.32646pt too wide) in paragraph at lines 160--162
+Overfull \hbox (1189.32646pt too wide) in paragraph at lines 161--163
 \OT1/ptm/m/n/12 SQL Query an-no-ta-tion is [][]\OT1/pcr/m/n/12 @Query\verb. Thi
 s annotation takes a SQL query as a parameter.  Then immediately below it, a fu
 nction is defined that will handle that query and return either an entity or a 
 list of some sort. The \verb[]\OT1/ptm/m/n/12 @Query[][]\OT1/pcr/m/n/12 upport
  []
 
-[10]
 (./app/src/main/java/com/example/roomandapi/repository/TeamMemberRepository.kt)
-
-LaTeX Warning: Citation `kotlinCoroutines' on page 11 undefined on input line 1
-65.
-
-[11] (./app/src/main/java/com/example/roomandapi/database/WCDatabase.kt)
-[12]
-
-LaTeX Warning: Citation `roomDBMethods' on page 13 undefined on input line 170.
-
-
-
-Overfull \hbox (12.75139pt too wide) in paragraph at lines 170--171
+[11] (./app/src/main/java/com/example/roomandapi/database/WCDatabase.kt
+[12])
+Overfull \hbox (12.75139pt too wide) in paragraph at lines 171--172
 \OT1/ptm/m/n/12 Room-Database us-ing the line [][]\OT1/pcr/m/n/12 abstract clas
 s <nameOfDatabase>: RoomDatabase()[]\OT1/ptm/m/n/12 .
  []
 
 (./app/src/main/java/com/example/roomandapi/utility/DateTimeConverter.kt
-[13])
-
-LaTeX Warning: Citation `SqliteDataTypes' on page 14 undefined on input line 18
-3.
-
-
-LaTeX Warning: Citation `RoomDBTypeConverters' on page 14 undefined on input li
-ne 183.
-
-[14]
-
-LaTeX Warning: Citation `DateTimeFormatterDocs' on page 15 undefined on input l
-ine 185.
-
+[13]) [14]
 (./app/src/main/java/com/example/roomandapi/viewmodel/TeamMemberViewModel.kt
-[15])
-
-LaTeX Warning: Citation `AndroidTestingFundamentals' on page 16 undefined on in
-put line 201.
-
-[16]
-<images/testing/1_rightClick.png, id=561, 1445.4pt x 903.375pt>
+[15]) [16]
+<images/testing/1_rightClick.png, id=587, 1445.4pt x 903.375pt>
 File: images/testing/1_rightClick.png Graphic file (type png)
 <use images/testing/1_rightClick.png>
-Package pdftex.def Info: images/testing/1_rightClick.png  used on input line 20
-9.
+Package pdftex.def Info: images/testing/1_rightClick.png  used on input line 21
+0.
 (pdftex.def)             Requested size: 469.75502pt x 277.88008pt.
-<images/testing/2_generate_test.png, id=565, 584.1825pt x 667.49374pt>
+<images/testing/2_generate_test.png, id=591, 584.1825pt x 667.49374pt>
 File: images/testing/2_generate_test.png Graphic file (type png)
 <use images/testing/2_generate_test.png>
 Package pdftex.def Info: images/testing/2_generate_test.png  used on input line
- 220.
+ 221.
 (pdftex.def)             Requested size: 469.75502pt x 505.70073pt.
  [17 <./images/testing/1_rightClick.png>]
-<images/testing/3_pick_testing_Framework.png, id=575, 709.65125pt x 804.00375pt
+<images/testing/3_pick_testing_Framework.png, id=602, 709.65125pt x 804.00375pt
 >
 File: images/testing/3_pick_testing_Framework.png Graphic file (type png)
 <use images/testing/3_pick_testing_Framework.png>
 Package pdftex.def Info: images/testing/3_pick_testing_Framework.png  used on i
-nput line 231.
+nput line 232.
 (pdftex.def)             Requested size: 469.75502pt x 506.68205pt.
  [18 <./images/testing/2_generate_test.png>]
-<images/testing/4_pick_test_type.png, id=585, 549.05125pt x 553.06625pt>
+<images/testing/4_pick_test_type.png, id=612, 549.05125pt x 553.06625pt>
 File: images/testing/4_pick_test_type.png Graphic file (type png)
 <use images/testing/4_pick_test_type.png>
 Package pdftex.def Info: images/testing/4_pick_test_type.png  used on input lin
-e 241.
+e 242.
 (pdftex.def)             Requested size: 469.75502pt x 437.66463pt.
  [19 <./images/testing/3_pick_testing_Framework.png>]
-<images/testing/5_result.png, id=596, 925.4575pt x 734.745pt>
+<images/testing/5_result.png, id=623, 925.4575pt x 734.745pt>
 File: images/testing/5_result.png Graphic file (type png)
 <use images/testing/5_result.png>
-Package pdftex.def Info: images/testing/5_result.png  used on input line 251.
+Package pdftex.def Info: images/testing/5_result.png  used on input line 252.
 (pdftex.def)             Requested size: 469.75502pt x 349.97012pt.
  [20 <./images/testing/4_pick_test_type.png>] [21 <./images/testing/5_result.pn
 g>]
-
-LaTeX Warning: Citation `kotlinCoroutines' on page 22 undefined on input line 2
-98.
-
-
-LaTeX Warning: Citation `SimplifiedCodingRoomTesting' on page 22 undefined on i
-nput line 298.
-
+[22]
 (./app/src/androidTest/java/com/example/roomandapi/entity/TeamMemberTest.kt
-[22] [23])
-
-LaTeX Warning: Citation `mediumJetpackNavigation' on page 24 undefined on input
- line 308.
-
-
-LaTeX Warning: Citation `NavigationCodeLab' on page 24 undefined on input line 
-308.
-
-(./app/src/main/java/com/example/roomandapi/views/MainView.kt [24]) [25]
-(./documentation.lof)
+[23]) (./app/src/main/java/com/example/roomandapi/views/MainView.kt [24])
+[25] (./documentation.lof)
 \tf@lof=\write6
 \openout6 = `documentation.lof'.
 
@@ -724,37 +670,57 @@ LaTeX Warning: Citation `NavigationCodeLab' on page 24 undefined on input line
 \tf@lot=\write7
 \openout7 = `documentation.lot'.
 
- (./documentation.lol [26])
+ [26] (./documentation.lol)
 \tf@lol=\write8
 \openout8 = `documentation.lol'.
 
 
-No file documentation.bbl.
-[27] (./documentation.aux)
+(./documentation.bbl [27]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
+/ codelabs / 
+ []
 
-LaTeX Warning: There were undefined references.
 
+Underfull \hbox (badness 3713) in paragraph at lines 64--65
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
+/ training / testing / 
+ []
+
+
+Underfull \hbox (badness 7486) in paragraph at lines 75--76
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / medium . com / google-[]de
+veloper-[]experts / 
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
+/ codelabs / 
+ []
+
+) [29] (./documentation.aux)
 Package rerunfilecheck Info: File `documentation.out' has not changed.
 (rerunfilecheck)             Checksum: 2D1662A389038516542514F35D8C6008;1931.
  ) 
 Here is how much of TeX's memory you used:
- 15640 strings out of 478994
- 247808 string characters out of 5858184
- 1045294 words of memory out of 5000000
- 32219 multiletter control sequences out of 15000+600000
+ 15789 strings out of 478994
+ 249971 string characters out of 5858184
+ 1035728 words of memory out of 5000000
+ 32336 multiletter control sequences out of 15000+600000
  421307 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,12n,117p,1349b,2069s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,12n,117p,1349b,2032s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
 021/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/tex
 mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on documentation.pdf (27 pages, 1805515 bytes).
+Output written on documentation.pdf (29 pages, 1811414 bytes).
 PDF statistics:
- 977 PDF objects out of 1000 (max. 8388607)
- 918 compressed objects within 10 object streams
- 596 named destinations out of 1000 (max. 500000)
+ 1063 PDF objects out of 1200 (max. 8388607)
+ 1001 compressed objects within 11 object streams
+ 623 named destinations out of 1000 (max. 500000)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
