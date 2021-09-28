@@ -49,8 +49,8 @@ android {
     }
 }
 
-tasks.named("dokkaHtml") {
-    outputDirectory.set(buildDir.resolve("dokka"))
+tasks.dokkaHtml.configure {
+    outputDirectory.set(file("../documentation/html"))
 }
 
 dependencies {

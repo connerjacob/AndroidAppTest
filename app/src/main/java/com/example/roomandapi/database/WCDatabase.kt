@@ -12,6 +12,7 @@ import com.example.roomandapi.entity.TeamMember
                      ],
     version = 1,
     exportSchema = false)
+@TypeConverters(DateTimeConverter::class)
 abstract class WCDatabase: RoomDatabase() {
     abstract fun teamMemberDao(): TeamMemberDao
 

@@ -49,8 +49,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\small \thepage}
-\lhead{\small Android Template Code}  % EDIT THIS
-\chead{\small Documentation on JetPack Compose and RoomDatabase Design Practices} 
+\lhead{\small Documentation}  % EDIT THIS
+\chead{\small JetPack Compose and RoomDatabase Design Practices} 
 
 %-------------------------------------------------------------------------
 \begin{document}
@@ -59,7 +59,7 @@
 {\large\textbf{Android Template Code}}\\ % EDIT THIS
                                 % REPLACE # with HW num and ADD title
 Jacob Conner\\                     % EDIT THIS
-September 22, 2021\\                      % EDIT THIS
+September 27, 2021\\                      % EDIT THIS
 \end{centering}
 
 %-------------------------------------------------------------------------
@@ -92,8 +92,9 @@ Various gradle tasks should be added in the application gradle file.
 \begin{lstlisting}[numbers=none, 
 			caption=Task to generate Dokka documentation,
 			label={lst:dokkatask}]
-tasks.named("dokkaHtml"){
-	outputDirectory.set(buildDir.resolve("dokka"))
+tasks.dokkaHtml.configure {
+    outputDirectory.set(file("../documentation/html"))
+}
 \end{lstlisting}
 The task to generate dokka documentation is defined using the code in Listing \ref{lst:dokkatask} . Gradle documentation can be created using the terminal with the command \verb|gradlew dokkaHtml|. Dokka will then parse all KDoc comment lines in Kotlin classes and generate the documentation in the build/dokka folder. 
 
@@ -141,6 +142,7 @@ The implementations are briefly discussed in Section \ref{lst:appBuildGradle}, b
 \end{itemize}
  \newpage
  
+ The model view view model approach taken in this document is largely derived from the Make it Easy tutorial \cite{MakeItEasyRoom1} \cite{MakeItEasyRoom2} \cite{RoomCodeLab}.
  \subsection{Entities}
 The lowest level of RoomDatabase is the entity or data model. An entity is simply a data class that describes the schema for a time using Room annotations. The contents of each entity should correspond to the columns of a single SQLite table. 
 \lstinputlisting[language=Java, caption=Example entity class, label={lst:exampleEntity}]{app/src/main/java/com/example/roomandapi/entity/TeamMember.kt}
@@ -160,17 +162,151 @@ Room provides a few SQL query annotations that do not require you to specificall
 
 \subsection{Repository}
 \lstinputlisting[language=Java, caption=Example repository class, label={lst:exampleRepo}]{app/src/main/java/com/example/roomandapi/repository/TeamMemberRepository.kt}
+In order to simplify the ability to to call the functions in the DAO interface, a repository class is created.An example repository is shown in Listing \ref{lst:exampleRepo}  This repository class takes the DAO interface as an argument. Class methods for each of the DAO functions. In order to support asynchronous methods since a SQL query may not run instantaneously, each method is marked with suspend. Suspend is part of the coroutines library and is used to force a method to run asynchronously on a coroutine. "A coroutine is an instance of suspendable  computation" that is "not bound to any particular thread" that can be suspended and resumed on different threads \cite{kotlinCoroutines}. 
 
 \subsection{Database}
 \lstinputlisting[language=Java, caption=Example database class, label={lst:exampleDB}]{app/src/main/java/com/example/roomandapi/database/WCDatabase.kt}
 
+Listing \ref{lst:exampleDB} shows the database class. There should be one database class for each database in the project, but generally one database should suffice for most applications. The database class starts with the \verb|@Database| annotation which abstracts the requirements for any SQLite database using the SQLite connector in a given language. This annotation requires a list of entity classes in the database, a database version, and exportSchema. The database is an abstract class extending the RoomDatabase using the line \verb|abstract class <nameOfDatabase>: RoomDatabase()|. An abstract constructor for each DAO is provided to allow the database to access the sql queries needed by the entity managed by the DAO. The database class has one method, \verb|getInstance| which takes the context of the application. and returns a returns a database object. A database instance is created with the Room.databaseBuilder method and it takes the context of the application provided, the database class and a string with the name of the database. The synchronized method chains fallbackToDestructiveMigration(), which is used for migrations, when they fail and rebuilds the database if the migration fails. The build method is the method that actually builds the database \cite{roomDBMethods}. 
+
+\subsection{Supporting Dates}
+\lstinputlisting[language=Java, caption=Converter Class for supporting Dates, label={lst:exampleConverter}]{app/src/main/java/com/example/roomandapi/utility/DateTimeConverter.kt}
+
+SQLite supports 5 data types. 
+\begin{itemize}
+\item NULL 
+\item INTEGER
+\item REAL
+\item TEXT
+\item BLOB
+\end{itemize}
+A notable omission in the SQLite database is the absence of a Date type. Dates are supported in a variety of ways. They can be stored as an INTEGER as timestamp with the seconds since January 1st, 1970. Another alternative is it can be stored as TEXT variable using ISO8601 strings such as "YYYY-MM-DD". A final option is the Date can be stored as Julian days numbers since November 24th 4714 BC. RoomDatabase does not provide out of the box support for dates likely due to the variety of options to store Dates in SQLite \cite{SqliteDataTypes}. Instead the developer has to create a helper converter class to convert the type of Date variable used in Kotlin to the type used in the SQLite design \cite{RoomDBTypeConverters}. 
+
+In Listing \ref{lst:exampleConverter} an example type converter is provided to convert a date string formatted using the ISO86601 LOCAL\_DATE string. This class contains a formatter which is used to define how the DateTime string is formatted. There are numerous options for date time string formatting supported in Java and Kotlin \cite{DateTimeFormatterDocs}. Once the formatting string has been defined, the converter class contains two methods for converting to and from the LocalDate class. 
+
+\begin{lstlisting}[numbers=none, 
+			caption=Task to generate Dokka documentation,
+			label={lst:converterAnnotation}]
+@TypeConverters(DateTimeConverter::class)
+\end{lstlisting}
+
+Once the converter class has been created, it needs to be added to the Database class shown in \ref{lst:exampleDB}.The \verb|@TypeConverters| annotation is used to allow the Database to support those conversions between SQLite types and Kotlin classes. This annotation is added before the database class header and takes the class for the file used as shown in Listing \ref{lst:converterAnnotation} 
+
 \subsection{ViewModel}
 \lstinputlisting[language=Java, caption=Example ViewModel class, label={lst:exampleViewModel}]{app/src/main/java/com/example/roomandapi/viewmodel/TeamMemberViewModel.kt}
+The view model is the class that GUI will interact with to run queries. This final layer of abstraction 
+The view model, class extends the AndroidViewModel class and takes the argument of application as the context. The init function initializes a DAO with the database class's get instance method using application as context and calls the teamMemberDao function to generate the Dao. 
+
+\section{Testing Room}
+In Android projects there are two types of unit tests. There are standard Unit Tests that make use of the JUnit library and run like a normal Java or Kotlin project would. The second type of test is the Android  Test which runs a virtualized environment to access the Android Libraries to run the functions that require the Android Framework to run \cite{AndroidTestingFundamentals}. Room Database is one of those examples. 
+
+\subsection{Creating Tests}
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=10 10 10 50, clip, width=\textwidth] {images/testing/1_rightClick.png}
+    \caption{Step 1. Open the file you want to test and right click it.}
+    \label{fig:test_step_1}
+\end{figure}
+
+The process for creating an Android Test with room begins by first navigating to the file that you would like to test. Right click anywhere in the open file and select \verb}Generate} as shown in Figure \ref{fig:test_step_1}
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=10 10 10 50, clip, width=\textwidth] {images/testing/2_generate_test.png}
+    \caption{Step 2. Click Generate and then Click Test}
+    \label{fig:test_step_2}
+\end{figure}
+
+From the \verb|Generate| menu, select \verb|Test...| to create a new test file as shown in Figure \ref{fig:test_step_2},
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=10 10 10 50, clip, width=\textwidth] {images/testing/3_pick_testing_Framework.png}
+    \caption{Step 3, Select the version of JUnit to use}
+    \label{fig:test_step_3}
+\end{figure}
+The \verb|Create Test| dialog box appears after selecting \verb|Test...|. In this dialog as shown in Figure \ref{fig:test_step_3}, the user can specify the type of testing framework to use with the \verb|Testing Library| dropdown. In this example, the JUnit4 testing library is used.
+
+\begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=10 10 10 50, clip, width=\textwidth] {images/testing/4_pick_test_type.png}
+    \caption{Step 4, Determine the type of test}
+    \label{fig:test_step_4}
+\end{figure}
+ Then the \verb|OK| button can be clicked to move on to the \verb|Choose Destination| dialog box shown in Figure \ref{fig:test_step_4}. In this dialog box you can specify whether this will be an AndroidTest running within an emulator or a standard JUnit test by selecting the appropriate destination, AndroidTests or Tests. Since we are testing the RoomDatabase, the test has to be an Android Test and must stored in the AndroidTests directory
+
+ \begin{figure}[H]
+    \centering
+    % trim and clip are used to crop the image, trim=left bottom right top
+    % width sets max width, height will be scaled appropriately
+    \includegraphics[trim=10 10 10 50, clip, width=\textwidth] {images/testing/5_result.png}
+    \caption{Auto-generated Test Class}
+    \label{fig:test_step_5}
+\end{figure}
+ 
+ After following those steps, a skeleton of an  Android Test class will be created . In order to get the class to run properly, an annotation \verb|@RunWith(AndroidJUnit4::class)| needs to be added at the front of the class. The class header will also need to extend the TestCase class using the heading \verb|class nameOfClass: TestCase(){| After that has been created, common variables need to be created as members of the class. When testing the room database, the private members should include an instance of the database, the dao being tested and possibly the repository if the repository is being tested.  
+
+ \begin{lstlisting}[numbers=none, 
+			caption=Code to Set up the Database in Test,
+			label={lst:before_testing}]
+@Before
+    public override fun setUp(){
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        db = Room.inMemoryDatabaseBuilder(context, WCDatabase::class.java).build()
+        dao = db.userDao()
+    }
+\end{lstlisting}
+ Since the database will have to be created with every test,  the \verb|@Before| annotation is needed to define the code to generate the database. Listing \ref{lst:before_testing} contains a \verb|setUp()| function which is used to create a an \verb|inMemoryDatabase| which is a database that is loaded into memory but does not persist after it is closed, which makes it ideal for testing. The inMemoryDatabase is created using Room's \verb|inMemoryDatabseBuilder| class which takes the application context and the class of the database to instantiate with the build() method. Once the database is created, the dao is instantiated from the appropriate database method.
+
+   \begin{lstlisting}[numbers=none, 
+			caption=Code to close the Database after the test,
+			label={lst:after_testing}]
+    @After
+    fun closeDB(){
+        db.close()
+    }
+\end{lstlisting}
+
+Since every test is going to have to close the databse, the \verb|@After| annotation is used to create a function that is run after each test to close the database. An example of this function is shown in Listing \ref{lst:after_testing}. The function \verb|closeDB()| simply abstractions the database's close method and calls it. 
+
+   \begin{lstlisting}[numbers=none, 
+			caption=Example Test for Room Database,
+			label={lst:example_room_test}]
+ @Test
+    fun TestWriteAndReadUser() = runBlocking(){
+        val members: List<TeamMember> =  listOf(
+            TeamMember(1,
+            "Jacob",
+            "Conner",
+            "Jacob Conner is a senior at Old Dominion University majoring in Computer Science. Currently, he lives in Blacksburg, Virginia, and works in a chat-based technical support role for Dish Network. Some of his hobbies include archaeology, learning Japanese and browsing Linkedin Learning.")
+        )
+        dao.insert()
+        val byName = dao.getByName("Jacob", "Conner")
+        MatcherAssert.assertThat(byName, CoreMatchers.equalTo(members[0]))
+    }
+\end{lstlisting}
+
+Now that the initial setup has been created, tests for the database can be created. A test is annotated with  \verb|@Test| before the test function.  Each function is set up with runBlocking to force the thread used to call the test to wait until the test finishes \cite{kotlinCoroutines}.  Then the test is setup with anything particular to the test. In Listing \ref{lst:example_room_test} the database's ability to insert and read data is tested by creating an instance of a team member. This team member is inserted into the database using the dao's insert method. The database is read to create a new instance of the team member which should be the same as the team member just inserted with the dao's getByName method. The MatcherAssert.assertThat method is used to test if the two TeamMember entities are equal. If they are equal, the test passes \cite{SimplifiedCodingRoomTesting}. 
+
+\lstinputlisting[language=Java, caption=Example entity test class, label={lst:exampleEntityTest}]{app/src/androidTest/java/com/example/roomandapi/entity/TeamMemberTest.kt}
+
+The example test file for the TeamMember class is shown in listing \ref{lst:exampleEntityTest}. 
+
 
 \section{JetPack Compose}
 
 \subsection{Navigation}
-\lstinputlisting[language=Java, caption=Example database class, label={lst:exampleNavView}]{app/src/main/java/com/example/roomandapi/views/MainView.kt}
+Navigation in JetPack Compose consists of a NavController to provide the routes to the various views and buttons on the view to navigate to those routes \cite{mediumJetpackNavigation} \cite{NavigationCodeLab}. 
+\lstinputlisting[language=Java, caption=Example Activty View with a NavController, label={lst:exampleNavView}]{app/src/main/java/com/example/roomandapi/views/MainView.kt}
 
 
 \begin{lstlisting}[numbers=none, 
