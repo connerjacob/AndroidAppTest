@@ -12,6 +12,9 @@ interface TeamMemberDao {
     @Query("SELECT * FROM team WHERE id = :id")
     suspend fun getById(id: Int): TeamMember
 
+    @Query("SELECT * FROM team WHERE firstName = :s1 and lastName = :s2")
+    suspend fun getByName(s1: String, s2: String): TeamMember
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: List<TeamMember>)
 
@@ -23,4 +26,6 @@ interface TeamMemberDao {
 
     @Query("DELETE FROM team")
     suspend fun deleteAll()
+
+
 }

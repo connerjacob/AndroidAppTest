@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.roomandapi.dao.TeamMemberDao
 import com.example.roomandapi.entity.TeamMember
+import com.example.workout_companion.utility.DateTimeConverter
 
 @Database(entities = [
     TeamMember::class
