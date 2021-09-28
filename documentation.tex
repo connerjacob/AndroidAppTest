@@ -254,7 +254,7 @@ The \verb|Create Test| dialog box appears after selecting \verb|Test...|. In thi
     \label{fig:test_step_5}
 \end{figure}
  
- After following those steps, a skeleton of an  Android Test class will be created . In order to get the class to run properly, an annotation \verb|@RunWith(AndroidJUnit4::class)| needs to be added at the front of the class. The class header will also need to extend the TestCase class using the heading \verb|class nameOfClass: TestCase(){| After that has been created, common variables need to be created as members of the class. When testing the room database, the private members should include an instance of the database, the dao being tested and possibly the repository if the repository is being tested.  
+ After following those steps, a skeleton of an  Android Test class will be created . In order to get the class to run properly, an annotation \verb|@RunWith(AndroidJUnit4::class)| needs to be added at the front of the class. The class header will also need to extend the TestCase class using the heading \verb|class nameOfClass: TestCase(){| After that has been created, common variables need to be created as members of the class. When testing the Room Database, the private members should include an instance of the database, the dao being tested and possibly the repository if the repository is being tested.  
 
  \begin{lstlisting}[numbers=none, 
 			caption=Code to Set up the Database in Test,
@@ -277,7 +277,7 @@ The \verb|Create Test| dialog box appears after selecting \verb|Test...|. In thi
     }
 \end{lstlisting}
 
-Since every test is going to have to close the databse, the \verb|@After| annotation is used to create a function that is run after each test to close the database. An example of this function is shown in Listing \ref{lst:after_testing}. The function \verb|closeDB()| simply abstractions the database's close method and calls it. 
+Since every test is going to have to close the databse, the \verb|@After| annotation is used to create a function that is run after each test to close the database. An example of this function is shown in Listing \ref{lst:after_testing}. The function \verb|closeDB()| simply abstracts the database's close method and calls it. 
 
    \begin{lstlisting}[numbers=none, 
 			caption=Example Test for Room Database,

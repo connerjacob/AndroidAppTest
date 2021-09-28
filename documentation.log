@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -676,25 +676,48 @@ g>]
 
 
 (./documentation.bbl [27]
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 []\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
 / codelabs / 
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 64--65
-[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
-/ training / testing / 
+Underfull \hbox (badness 2020) in paragraph at lines 55--56
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / web . archive . org / web 
+/ 20210917234748 / https : 
  []
 
 
-Underfull \hbox (badness 7486) in paragraph at lines 75--76
-[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / medium . com / google-[]de
-veloper-[]experts / 
+Underfull \hbox (badness 3396) in paragraph at lines 55--56
+\OT1/pcr/m/n/12 / / developer . android . com / training / data-[]storage / roo
+m / 
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 61--62
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / web . archive . org / web 
+/ 20210813002023 / https : 
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 61--62
+\OT1/pcr/m/n/12 / / docs . oracle . com / javase / 8 / docs / api / java / time
+ / format / 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / web . archive . org / web 
+/ 20210723153430 / 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+\OT1/pcr/m/n/12 https : / / medium . com / google-[]developer-[]experts / 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 []\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
 / codelabs / 
  []
@@ -706,7 +729,7 @@ Package rerunfilecheck Info: File `documentation.out' has not changed.
 Here is how much of TeX's memory you used:
  15789 strings out of 478994
  249971 string characters out of 5858184
- 1035728 words of memory out of 5000000
+ 1033728 words of memory out of 5000000
  32336 multiletter control sequences out of 15000+600000
  421307 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -717,10 +740,10 @@ exlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
 mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on documentation.pdf (29 pages, 1811414 bytes).
+Output written on documentation.pdf (29 pages, 1811861 bytes).
 PDF statistics:
- 1063 PDF objects out of 1200 (max. 8388607)
- 1001 compressed objects within 11 object streams
+ 1069 PDF objects out of 1200 (max. 8388607)
+ 1007 compressed objects within 11 object streams
  623 named destinations out of 1000 (max. 500000)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
