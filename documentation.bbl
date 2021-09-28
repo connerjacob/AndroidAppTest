@@ -83,4 +83,10 @@ Google,
   compose navigation}, accessed on 2021-9-27.
 \newline\urlprefix\url{https://developer.android.com/codelabs/jetpack-compose-navigation}
 
+\bibitem{StackOverflowCoil}
+StackOverflow,
+  \href{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}{How
+  to load image from url in jetpack compose?}, accessed on 2021-9-28.
+\newline\urlprefix\url{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}
+
 \end{thebibliography}

@@ -18,3 +18,5 @@
 \contentsline {lstlisting}{\numberline {18}Example Activty View with a NavController}{24}{lstlisting.18}%
 \contentsline {lstlisting}{\numberline {19}Function to create a simple Nav Controller}{25}{lstlisting.19}%
 \contentsline {lstlisting}{\numberline {20}Button to navigate to a view}{26}{lstlisting.20}%
+\contentsline {lstlisting}{\numberline {21}Coil Dependency}{27}{lstlisting.21}%
+\contentsline {lstlisting}{\numberline {22}Example Image using Coil}{27}{lstlisting.22}%

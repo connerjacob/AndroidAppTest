@@ -14,4 +14,5 @@
 \contentsline {subsection}{\numberline {4.1}Creating Tests}{17}{subsection.4.1}%
 \contentsline {section}{\numberline {5}JetPack Compose}{24}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Navigation}{24}{subsection.5.1}%
-\contentsline {section}{\numberline {6}Documenting with Dokka}{26}{section.6}%
+\contentsline {subsection}{\numberline {5.2}Handling Remote Resources - Images}{26}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Documenting with Dokka}{27}{section.6}%

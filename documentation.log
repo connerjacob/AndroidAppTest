@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 17:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.22)  28 SEP 2021 19:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -624,20 +624,20 @@ s <nameOfDatabase>: RoomDatabase()[]\OT1/ptm/m/n/12 .
 [13]) [14]
 (./app/src/main/java/com/example/roomandapi/viewmodel/TeamMemberViewModel.kt
 [15]) [16]
-<images/testing/1_rightClick.png, id=587, 1445.4pt x 903.375pt>
+<images/testing/1_rightClick.png, id=592, 1445.4pt x 903.375pt>
 File: images/testing/1_rightClick.png Graphic file (type png)
 <use images/testing/1_rightClick.png>
 Package pdftex.def Info: images/testing/1_rightClick.png  used on input line 21
 0.
 (pdftex.def)             Requested size: 469.75502pt x 277.88008pt.
-<images/testing/2_generate_test.png, id=591, 584.1825pt x 667.49374pt>
+<images/testing/2_generate_test.png, id=596, 584.1825pt x 667.49374pt>
 File: images/testing/2_generate_test.png Graphic file (type png)
 <use images/testing/2_generate_test.png>
 Package pdftex.def Info: images/testing/2_generate_test.png  used on input line
  221.
 (pdftex.def)             Requested size: 469.75502pt x 505.70073pt.
  [17 <./images/testing/1_rightClick.png>]
-<images/testing/3_pick_testing_Framework.png, id=602, 709.65125pt x 804.00375pt
+<images/testing/3_pick_testing_Framework.png, id=607, 709.65125pt x 804.00375pt
 >
 File: images/testing/3_pick_testing_Framework.png Graphic file (type png)
 <use images/testing/3_pick_testing_Framework.png>
@@ -645,14 +645,14 @@ Package pdftex.def Info: images/testing/3_pick_testing_Framework.png  used on i
 nput line 232.
 (pdftex.def)             Requested size: 469.75502pt x 506.68205pt.
  [18 <./images/testing/2_generate_test.png>]
-<images/testing/4_pick_test_type.png, id=612, 549.05125pt x 553.06625pt>
+<images/testing/4_pick_test_type.png, id=617, 549.05125pt x 553.06625pt>
 File: images/testing/4_pick_test_type.png Graphic file (type png)
 <use images/testing/4_pick_test_type.png>
 Package pdftex.def Info: images/testing/4_pick_test_type.png  used on input lin
 e 242.
 (pdftex.def)             Requested size: 469.75502pt x 437.66463pt.
  [19 <./images/testing/3_pick_testing_Framework.png>]
-<images/testing/5_result.png, id=623, 925.4575pt x 734.745pt>
+<images/testing/5_result.png, id=628, 925.4575pt x 734.745pt>
 File: images/testing/5_result.png Graphic file (type png)
 <use images/testing/5_result.png>
 Package pdftex.def Info: images/testing/5_result.png  used on input line 252.
@@ -662,20 +662,26 @@ g>]
 [22]
 (./app/src/androidTest/java/com/example/roomandapi/entity/TeamMemberTest.kt
 [23]) (./app/src/main/java/com/example/roomandapi/views/MainView.kt [24])
-[25] (./documentation.lof)
+[25] [26]
+Overfull \hbox (4.3382pt too wide) in paragraph at lines 368--369
+[][]\OT1/pcr/m/n/12 Image []\OT1/ptm/m/n/12 com-pos-able func-tion and set-ting
+ the painter prop-erty with the [][]\OT1/pcr/m/n/12 rememberImagePainter
+ []
+
+(./documentation.lof)
 \tf@lof=\write6
 \openout6 = `documentation.lof'.
 
- (./documentation.lot)
+ [27] (./documentation.lot)
 \tf@lot=\write7
 \openout7 = `documentation.lot'.
 
- [26] (./documentation.lol)
+ [28] (./documentation.lol)
 \tf@lol=\write8
 \openout8 = `documentation.lol'.
 
 
-(./documentation.bbl [27]
+[29] (./documentation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 30--31
 []\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / developer . android . com 
 / codelabs / 
@@ -705,7 +711,7 @@ Underfull \hbox (badness 1859) in paragraph at lines 61--62
  / format / 
  []
 
-[28]
+[30]
 Underfull \hbox (badness 10000) in paragraph at lines 78--79
 []\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / web . archive . org / web 
 / 20210723153430 / 
@@ -722,15 +728,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--85
 / codelabs / 
  []
 
-) [29] (./documentation.aux)
+
+Underfull \hbox (badness 6157) in paragraph at lines 90--91
+[]\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / stackoverflow . com / ques
+tions / 66957702 / 
+ []
+
+) [31] (./documentation.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `documentation.out' has not changed.
-(rerunfilecheck)             Checksum: 2D1662A389038516542514F35D8C6008;1931.
+(rerunfilecheck)             Checksum: 2AB4DA4B51B077F52B2457BE46EECA1A;2171.
  ) 
 Here is how much of TeX's memory you used:
- 15789 strings out of 478994
- 249971 string characters out of 5858184
- 1033728 words of memory out of 5000000
- 32336 multiletter control sequences out of 15000+600000
+ 15815 strings out of 478994
+ 250328 string characters out of 5858184
+ 1032864 words of memory out of 5000000
+ 32350 multiletter control sequences out of 15000+600000
  421307 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,12n,117p,1349b,2032s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -740,10 +755,10 @@ exlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
 mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on documentation.pdf (29 pages, 1811861 bytes).
+Output written on documentation.pdf (31 pages, 1818104 bytes).
 PDF statistics:
- 1069 PDF objects out of 1200 (max. 8388607)
- 1007 compressed objects within 11 object streams
- 623 named destinations out of 1000 (max. 500000)
- 192 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1105 PDF objects out of 1200 (max. 8388607)
+ 1041 compressed objects within 11 object streams
+ 635 named destinations out of 1000 (max. 500000)
+ 200 words of extra memory for PDF output out of 10000 (max. 10000000)
 
