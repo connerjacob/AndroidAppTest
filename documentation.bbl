@@ -1,0 +1,92 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{GoogleRoomDB}
+Google,
+  \href{https://web.archive.org/web/20210918002911/https://developer.android.com/training/data-storage/room}{Save
+  data in a local database using room}, accessed on 2021-9-22.
+\newline\urlprefix\url{https://web.archive.org/web/20210918002911/https://developer.android.com/training/data-storage/room}
+
+\bibitem{MakeItEasyRoom1}
+MakeItEasy, \href{https://www.youtube.com/watch?v=sbyiq0aM2iw&t=2s}{How to
+  create room database mvvm pattern in jetpack compose part - i}, accessed on
+  2021-9-27.
+\newline\urlprefix\url{https://www.youtube.com/watch?v=sbyiq0aM2iw&t=2s}
+
+\bibitem{MakeItEasyRoom2}
+MakeItEasy, \href{https://www.youtube.com/watch?v=UxsXRFl-Ho0}{How to create
+  room database mvvm pattern in jetpack compose part - 2}, accessed on
+  2021-9-27.
+\newline\urlprefix\url{https://www.youtube.com/watch?v=UxsXRFl-Ho0}
+
+\bibitem{RoomCodeLab}
+Google,
+  \href{https://developer.android.com/codelabs/android-room-with-a-view-kotlin#0}{Android
+  room with a view - kotlin}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://developer.android.com/codelabs/android-room-with-a-view-kotlin#0}
+
+\bibitem{kotlinCoroutines}
+Kotlin,
+  \href{https://web.archive.org/web/20210722140552/https://kotlinlang.org/docs/coroutines-basics.html}{Coroutines
+  basics﻿}, accessed on 2021-9-22.
+\newline\urlprefix\url{https://web.archive.org/web/20210722140552/https://kotlinlang.org/docs/coroutines-basics.html}
+
+\bibitem{roomDBMethods}
+Android,
+  \href{https://developer.android.com/reference/android/arch/persistence/room/RoomDatabase.Builder}{Roomdatabase.builder},
+  accessed on 2021-9-22.
+\newline\urlprefix\url{https://developer.android.com/reference/android/arch/persistence/room/RoomDatabase.Builder}
+
+\bibitem{SqliteDataTypes}
+SQLite,
+  \href{https://web.archive.org/web/20210902014614/https://www.sqlite.org/datatype3.html}{Datatypes
+  in sqlite version 3}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20210902014614/https://www.sqlite.org/datatype3.html}
+
+\bibitem{RoomDBTypeConverters}
+Android,
+  \href{https://web.archive.org/web/20210917234748/https://developer.android.com/training/data-storage/room/referencing-data}{Referencing
+  complex data using room referencing complex data using room}, accessed on
+  2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20210917234748/https://developer.android.com/training/data-storage/room/referencing-data}
+
+\bibitem{DateTimeFormatterDocs}
+Oracle,
+  \href{https://web.archive.org/web/20210813002023/https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html}{Class
+  datetimeformatter}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20210813002023/https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html}
+
+\bibitem{AndroidTestingFundamentals}
+Android,
+  \href{https://web.archive.org/web/20210912110612/https://developer.android.com/training/testing/fundamentals}{Fundamentals
+  of testing}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20210912110612/https://developer.android.com/training/testing/fundamentals}
+
+\bibitem{SimplifiedCodingRoomTesting}
+SimplifiedCoding, \href{https://www.youtube.com/watch?v=Hb0UV0f6kmQ}{Android
+  unit test room database}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://www.youtube.com/watch?v=Hb0UV0f6kmQ}
+
+\bibitem{mediumJetpackNavigation}
+J.~Wolf,
+  \href{https://web.archive.org/web/20210723153430/https://medium.com/google-developer-experts/navigating-in-jetpack-compose-78c78d365c6a}{Navigating
+  in jetpack compose}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20210723153430/https://medium.com/google-developer-experts/navigating-in-jetpack-compose-78c78d365c6a}
+
+\bibitem{NavigationCodeLab}
+Google,
+  \href{https://developer.android.com/codelabs/jetpack-compose-navigation}{Jetpack
+  compose navigation}, accessed on 2021-9-27.
+\newline\urlprefix\url{https://developer.android.com/codelabs/jetpack-compose-navigation}
+
+\bibitem{StackOverflowCoil}
+StackOverflow,
+  \href{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}{How
+  to load image from url in jetpack compose?}, accessed on 2021-9-28.
+\newline\urlprefix\url{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}
+
+\end{thebibliography}

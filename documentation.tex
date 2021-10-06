@@ -12,8 +12,9 @@
 \usepackage{xcolor}                 % for styling code
 \usepackage{multirow}
 \usepackage{float}
-\usepackage{ragged2e}
 \usepackage{csvsimple}
+\usepackage{ragged2e}
+\usepackage{cite}
 
 %New colors defined below
 \definecolor{backcolour}{RGB}{246, 246, 246}   % 0xF6, 0xF6, 0xF6
@@ -67,7 +68,7 @@ September 27, 2021\\                      % EDIT THIS
 
 % The * after \section just says to not number the sections
 \section{Gradle}
-This section examines the build.gradle files in the Project and App folders and the project Build.settings files. 
+This section examines the \textit{build.gradle} files in the Project and App folders and the project \textit{Build.settings} files. 
 \newpage
 \subsection{ProjectBuildGradle}
 \lstinputlisting[language=Java, caption=Project build.gradle file, label={lst:projectBuildGradle}]{build.gradle}
@@ -88,7 +89,7 @@ This app-level  \textit{build.gradle} file is used to define the various plugins
     \item Dokka plugin - org.jetbrains.dokka
 \end{itemize}
 \verb|com.android.application| and \verb|kotlin-android| are all included in the application by default. This example has added the plugin \verb|kotlin-kapt| to enable the program to load the room compiler dependency using the kapt command. The dokka plugin needed to create documentation using KDoc is added with the \verb|id("org.jetbrains.dokka") version "1.4.0"|.
-Various gradle tasks should be added in the application gradle file. 
+Various gradle tasks should be added in the application \textit{build.gradle} file. 
 \begin{lstlisting}[numbers=none, 
 			caption=Task to generate Dokka documentation,
 			label={lst:dokkatask}]
@@ -98,13 +99,13 @@ tasks.dokkaHtml.configure {
 \end{lstlisting}
 The task to generate dokka documentation is defined using the code in Listing \ref{lst:dokkatask} . Gradle documentation can be created using the terminal with the command \verb|gradlew dokkaHtml|. Dokka will then parse all KDoc comment lines in Kotlin classes and generate the documentation in the build/dokka folder. 
 
-Dependencies are stored in the dependencies section of the gradle file. When a new empty compose application is created, a number of compose dependencies are included as well as various testing frameworks. The Jetpack compose navigation library and the jetpack compose lifecycle libraries are not included by default but are present in the example app \textit{build.gradle} file. The project also makes use of RoomDatabase library so those libraries are included. In order to allow for the downloading and display of images from the internet the \verb|io.coil-kt:coil-compose| library is included. 
+Dependencies are stored in the dependencies section of the \textit{build.gradle} file. When a new empty compose application is created, a number of compose dependencies are included as well as various testing frameworks. The Jetpack compose navigation library and the jetpack compose lifecycle libraries are not included by default but are present in the example app \textit{build.gradle} file. The project also makes use of RoomDatabase library so those libraries are included. In order to allow for the downloading and display of images from the internet the \verb|io.coil-kt:coil-compose| library is included. 
 
 
 \newpage
 \section{AndroidManifest}
 \lstinputlisting[language=xml, caption=Android Manifests File, label={lst:androidXML}]{app/src/main/AndroidManifest.xml}
-The android manifests file shown in \ref{lst:androidXML} provides information about the various permissions in the application. 
+The \textit{android.manifest} file shown in \ref{lst:androidXML} provides information about the various permissions in the application. 
 
 \begin{lstlisting}[numbers=none, 
 			caption=Line to give permission to allow internet access,
@@ -211,7 +212,7 @@ In Android projects there are two types of unit tests. There are standard Unit T
     \label{fig:test_step_1}
 \end{figure}
 
-The process for creating an Android Test with room begins by first navigating to the file that you would like to test. Right click anywhere in the open file and select \verb}Generate} as shown in Figure \ref{fig:test_step_1}
+The process for creating an Android Test with room begins by first navigating to the file that you would like to test. Right click anywhere in the open file and select \verb|Generate...| as shown in Figure \ref{fig:test_step_1}
 
 \begin{figure}[H]
     \centering
@@ -253,7 +254,7 @@ The \verb|Create Test| dialog box appears after selecting \verb|Test...|. In thi
     \label{fig:test_step_5}
 \end{figure}
  
- After following those steps, a skeleton of an  Android Test class will be created . In order to get the class to run properly, an annotation \verb|@RunWith(AndroidJUnit4::class)| needs to be added at the front of the class. The class header will also need to extend the TestCase class using the heading \verb|class nameOfClass: TestCase(){| After that has been created, common variables need to be created as members of the class. When testing the room database, the private members should include an instance of the database, the dao being tested and possibly the repository if the repository is being tested.  
+ After following those steps, a skeleton of an  Android Test class will be created . In order to get the class to run properly, an annotation \verb|@RunWith(AndroidJUnit4::class)| needs to be added at the front of the class. The class header will also need to extend the TestCase class using the heading \verb|class nameOfClass: TestCase(){| After that has been created, common variables need to be created as members of the class. When testing the Room Database, the private members should include an instance of the database, the dao being tested and possibly the repository if the repository is being tested.  
 
  \begin{lstlisting}[numbers=none, 
 			caption=Code to Set up the Database in Test,
@@ -276,21 +277,22 @@ The \verb|Create Test| dialog box appears after selecting \verb|Test...|. In thi
     }
 \end{lstlisting}
 
-Since every test is going to have to close the databse, the \verb|@After| annotation is used to create a function that is run after each test to close the database. An example of this function is shown in Listing \ref{lst:after_testing}. The function \verb|closeDB()| simply abstractions the database's close method and calls it. 
+Since every test is going to have to close the databse, the \verb|@After| annotation is used to create a function that is run after each test to close the database. An example of this function is shown in Listing \ref{lst:after_testing}. The function \verb|closeDB()| simply abstracts the database's close method and calls it. 
 
    \begin{lstlisting}[numbers=none, 
 			caption=Example Test for Room Database,
 			label={lst:example_room_test}]
- @Test
+    @Test
     fun TestWriteAndReadUser() = runBlocking(){
         val members: List<TeamMember> =  listOf(
             TeamMember(1,
             "Jacob",
             "Conner",
-            "Jacob Conner is a senior at Old Dominion University majoring in Computer Science. Currently, he lives in Blacksburg, Virginia, and works in a chat-based technical support role for Dish Network. Some of his hobbies include archaeology, learning Japanese and browsing Linkedin Learning.")
+            "Jacob Conner is a senior at Old Dominion University majoring in Computer Science. Currently, he lives in Blacksburg, Virginia, and works in a chat-based technical support role for Dish Network. Some of his hobbies include archaeology, learning Japanese and browsing Linkedin Learning.",
+            "https://www.cs.odu.edu/~cpi/old/410/silvers21/bio/Jacob_Conner.jpg")
         )
-        dao.insert()
-        val byName = dao.getByName("Jacob", "Conner")
+        dao.insert(members)
+        val byName: TeamMember = dao.getByName("Jacob", "Conner")
         MatcherAssert.assertThat(byName, CoreMatchers.equalTo(members[0]))
     }
 \end{lstlisting}
@@ -331,7 +333,7 @@ fun appNavController() {
 }
 \end{lstlisting}
 
-
+In the navController function shown in listing \ref{lst:navControllerFunction}, the navController begins like all composable functions with the \verb|@Composable| annotation. Then the name of the function for the navController is defined. Since the nav controller manages routes, a state variable needs to be handled to keep track of the current route. This state is defined as navController in the example code and is created using the \verb|rememberNavController()| method. Next the NavHost is created which takes the state, and the default or \verb|startDestination|. Within the NavHost function, the \verb|composable| method is called for each route. This method simply takes the route which has a string for the name of the route. Inside of this function, the view that should be loaded with that particular route. Since we need to keep track of the current route, each view used in a navController should require the remembered navController..  
 \begin{lstlisting}[numbers=none, 
 			caption=Button to navigate to a view,
 			label={lst:navButton}]
@@ -342,20 +344,43 @@ Button(onClick = { navController.navigate("<routeToNavigateTo") }) {
 }
 \end{lstlisting}
 
+In order to move between routes, a Button component can be created like the one shown in Listing \ref{lst:navButton}. To make the button switch to a different route, the \verb|onClick| argument needs to be set to \verb|navController.navigate("nameOfRoute")|. Then normal styling can be used inside of the button. For example, a label can be set with the Text component with the Text property set to the name of the button. The text property's \verb|text=| can be omitted when the text is the only property set \cite{mediumJetpackNavigation}.  
+
+\subsection{Handling Remote Resources - Images}
+\begin{lstlisting}[numbers=none, 
+			caption=Coil Dependency,
+			label={lst:coilDependency}]
+implementation("io.coil-kt:coil-compose:1.3.1")
+\end{lstlisting}
+Some APIs may make use of Image files referred to remotely and there are instances when we would like the application to download an image from the web and use that image in the web. In order to support this, the \verb|Coil| library can be imported by adding the dependency in Listing \ref{lst:coilDependency} into the application's \textit{build.gradle} file. 
+
+\begin{lstlisting}[numbers=none, 
+			caption=Example Image using Coil,
+			label={lst:exampleWithCoil}]
+Image(
+                        painter = rememberImagePainter("https://www.cs.odu.edu/~cpi/old/410/silvers21/bio/Jacob\_Conner.jpg"),
+                        contentDescription = null,
+                        modifier = Modifier.size(128.dp)
+                    )
+\end{lstlisting}
+
+
+Once the dependency has been imported, the image urls can be loaded in the app by creating an \verb|Image| composable function and setting the painter property with the \verb|rememberImagePainter| function that takes the url as an argument \cite{StackOverflowCoil}. An example image composable to load a remote resource is shown in Listing \ref{lst:exampleWithCoil}.
+
+                    
+
 \section{Documenting with Dokka}
 test
-%referred to https://tex.stackexchange.com/questions/334899/space-between-words-in-bibliography for pacing
-% referred to https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex for bibtext
 \begin{appendix}
   \listoffigures
+  \newpage
   \listoftables
+  \newpage
   \lstlistoflistings
-  %\bibliographystyle{elsarticle-num} 
 
 \end{appendix}
- % \RaggedRight
-  %\bibliographystyle{unsrt}
-  \bibliography{references}
-
-
+\newpage
+\RaggedRight
+\bibliography{references}{}
+ \bibliographystyle{elsarticle-num} 
 \end{document}

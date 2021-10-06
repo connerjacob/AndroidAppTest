@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: documentation.aux
+The style file: elsarticle-num.bst
+Database file #1: references.bib
+I was expecting a `,' or a `)'---line 107 of file references.bib
+ :  bdsk-url-1 = {https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}
+ :                                                                                                           }
+I'm skipping whatever remains of this entry
+Warning--empty year in GoogleRoomDB
+Warning--empty year in MakeItEasyRoom1
+Warning--empty year in MakeItEasyRoom2
+Warning--empty year in RoomCodeLab
+Warning--empty year in kotlinCoroutines
+Warning--empty year in roomDBMethods
+Warning--empty year in SqliteDataTypes
+Warning--empty year in RoomDBTypeConverters
+Warning--empty year in DateTimeFormatterDocs
+Warning--empty year in AndroidTestingFundamentals
+Warning--empty year in SimplifiedCodingRoomTesting
+Warning--empty year in mediumJetpackNavigation
+Warning--empty year in NavigationCodeLab
+Warning--empty year in StackOverflowCoil
+You've used 14 entries,
+            2952 wiz_defined-function locations,
+            737 strings with 7453 characters,
+and the built_in function-call counts, 3044 in all, are:
+= -- 266
+> -- 56
+< -- 0
++ -- 28
+- -- 14
+* -- 170
+:= -- 391
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 28
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 126
+empty$ -- 421
+format.name$ -- 14
+if$ -- 827
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 0
+newline$ -- 64
+num.names$ -- 14
+pop$ -- 154
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 195
+stack$ -- 0
+substring$ -- 28
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 14
+while$ -- 14
+width$ -- 16
+write$ -- 119
+(There was 1 error message)
