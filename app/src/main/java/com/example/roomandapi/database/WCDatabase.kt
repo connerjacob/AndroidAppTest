@@ -5,18 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.roomandapi.dao.ProjectDao
 import com.example.roomandapi.dao.TeamMemberDao
+import com.example.roomandapi.entity.ProjectEntity
 import com.example.roomandapi.entity.TeamMember
 import com.example.workout_companion.utility.DateTimeConverter
 
 @Database(entities = [
-    TeamMember::class
+    TeamMember::class,
+    ProjectEntity::class
                      ],
-    version = 1,
+    version = 5,
     exportSchema = false)
 @TypeConverters(DateTimeConverter::class)
 abstract class WCDatabase: RoomDatabase() {
     abstract fun teamMemberDao(): TeamMemberDao
+    abstract fun projectDao(): ProjectDao
 
     companion object{
         @Volatile

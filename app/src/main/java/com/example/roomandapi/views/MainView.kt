@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -37,6 +38,9 @@ fun appNavController() {
         composable(route = "about") {
             AboutView(navController)
         }
+        composable(route = "addProject") {
+            AddProjectView(navController)
+        }
     }
 }
 
@@ -44,8 +48,16 @@ fun appNavController() {
 @Composable
 fun MainView(navController: NavController) {
         Column(){
-            Button(onClick = { navController.navigate("about") }) {
-                Text("About Us")
+            Row(){
+                Button(onClick = { navController.navigate("main") }) {
+                    Text("Main")
+                }
+                Button(onClick = { navController.navigate("about") }) {
+                    Text("About Us")
+                }
+                Button(onClick = { navController.navigate("addProject") }) {
+                    Text("Add a Project")
+                }
             }
             Column(
                 modifier = Modifier

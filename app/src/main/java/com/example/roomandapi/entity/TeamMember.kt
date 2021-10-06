@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "team")
 data class TeamMember(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id", index=true)
     var id: Int,
 
     @ColumnInfo(name = "firstName")

@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat.getSystemService
 
 import com.example.roomandapi.entity.TeamMember
 import com.example.roomandapi.ui.theme.RoomAndApiTheme
+import com.example.roomandapi.views.AddProjectView
 import com.example.roomandapi.views.MainView
 import com.example.roomandapi.views.appNavController
 
@@ -25,19 +26,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//           var TeamMemberList: List<TeamMember>
-//            val url: String = "http://localhost:7000/team"
-//            if (isNetworkConnected()) {
-//                doAsync {
-//                    TeamMemberList = Request(url).run()
-//                    uiThread { longToast("Request performed") }
-//                }
-//            }else {
-//                AlertDialog.Builder(this).setTitle("No Internet Connection")
-//                    .setMessage("Please check your internet connection and try again")
-//                    .setPositiveButton(android.R.string.ok) { _, _ -> }
-//                    .setIcon(android.R.drawable.ic_dialog_alert).show()
-//            }
             RoomAndApiTheme {
                 appNavController()
                 }
