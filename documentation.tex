@@ -60,7 +60,7 @@
 {\large\textbf{Android Template Code}}\\ % EDIT THIS
                                 % REPLACE # with HW num and ADD title
 Jacob Conner\\                     % EDIT THIS
-September 27, 2021\\                      % EDIT THIS
+October 7, 2021\\                      % EDIT THIS
 \end{centering}
 
 %-------------------------------------------------------------------------
@@ -181,9 +181,9 @@ SQLite supports 5 data types.
 \item TEXT
 \item BLOB
 \end{itemize}
-A notable omission in the SQLite database is the absence of a Date type. Dates are supported in a variety of ways. They can be stored as an INTEGER as timestamp with the seconds since January 1st, 1970. Another alternative is it can be stored as TEXT variable using ISO8601 strings such as "YYYY-MM-DD". A final option is the Date can be stored as Julian days numbers since November 24th 4714 BC. RoomDatabase does not provide out of the box support for dates likely due to the variety of options to store Dates in SQLite \cite{SqliteDataTypes}. Instead the developer has to create a helper converter class to convert the type of Date variable used in Kotlin to the type used in the SQLite design \cite{RoomDBTypeConverters}. 
+A notable omission in the SQLite database is the absence of a Date type. Dates are supported in a variety of ways. They can be stored as an INTEGER as timestamp with the seconds since January 1st, 1970. Another alternative is it can be stored as TEXT variable using ISO8601 strings such as "YYYY-MM-DD". A final option is the Date can be stored as Julian days numbers since November 24th 4714 BC. RoomDatabase does not provide out of the box support for dates likely due to the variety of options to store Dates in SQLite \cite{SqliteDataTypes}. Instead the developer has to create a helper converter class to convert the type of Date variable used in Kotlin to the type used in the SQLite design \cite{RoomDBTypeConverters} \cite{LuaSoftwareLocalDateTime}. 
 
-In Listing \ref{lst:exampleConverter} an example type converter is provided to convert a date string formatted using the ISO86601 LOCAL\_DATE string. This class contains a formatter which is used to define how the DateTime string is formatted. There are numerous options for date time string formatting supported in Java and Kotlin \cite{DateTimeFormatterDocs}. Once the formatting string has been defined, the converter class contains two methods for converting to and from the LocalDate class. 
+In Listing \ref{lst:exampleConverter} an example type converter is provided to convert a date string formatted using the ISO86601 LOCAL\_DATE string. This class contains a formatter which is used to define how the DateTime string is formatted. There are numerous options for date time string formatting supported in Java and Kotlin \cite{DateTimeFormatterDocs} \cite{AndroidDateTimeFormatterDocs}. Once the formatting string has been defined, the converter class contains two methods for converting to and from the LocalDate class \cite{StackOverflowLocalDate}. 
 
 \begin{lstlisting}[numbers=none, 
 			caption=Task to generate Dokka documentation,
@@ -308,7 +308,7 @@ The example test file for the TeamMember class is shown in listing \ref{lst:exam
 
 \subsection{Navigation}
 Navigation in JetPack Compose consists of a NavController to provide the routes to the various views and buttons on the view to navigate to those routes \cite{mediumJetpackNavigation} \cite{NavigationCodeLab}. 
-\lstinputlisting[language=Java, caption=Example Activty View with a NavController, label={lst:exampleNavView}]{app/src/main/java/com/example/roomandapi/views/MainView.kt}
+\lstinputlisting[language=Java, caption=Example Activity View with a NavController, label={lst:exampleNavView}]{app/src/main/java/com/example/roomandapi/views/MainView.kt}
 
 
 \begin{lstlisting}[numbers=none, 
@@ -367,7 +367,256 @@ Image(
 
 Once the dependency has been imported, the image urls can be loaded in the app by creating an \verb|Image| composable function and setting the painter property with the \verb|rememberImagePainter| function that takes the url as an argument \cite{StackOverflowCoil}. An example image composable to load a remote resource is shown in Listing \ref{lst:exampleWithCoil}.
 
-                    
+\subsection{Creating a form}
+
+A common task in most mobile applications is retrieving input from the user and this is most commonly handled through forms. Forms are a collection of various input fields and at least one button, which is used to trigger the submission process where the inputs are retrieved from the form, processed and then sent to a database or the relevant processing tools. 
+\lstinputlisting[language=Java, caption=Example View with a form to collect projects that a team member may work on, label={lst:exampleForm}]{app/src/main/java/com/example/roomandapi/views/AddProjectVIew.kt}
+
+An example of a form created using JetPack Compose is shown in Listing \ref{lst:exampleForm}. This form is a bit contrived to providet a variety of the more common input, but it is used to collect information about projects that a team member may work on. The form first consists of a text field to get the name of the project, a set of radio buttons that a user can use to select the perceived difficulty of the project, a dropdown box to set the category of project, a date for when the. project was created and lastly a drop down box where the user can specify the team member assigned to it, and it will return the user id in the team table for that team member. 
+
+
+The code used to create the form is shown in the AddProjectView function. This function is a composable function that is used in other composable functions and makes use of other other composable functions, so the \verb|@Composable| annotation is used. so it makes use of the @Composable which is accessible by a route in the NavController, so the NavController has to be passed to the function. 
+\begin{lstlisting}[numbers=none, 
+			caption=Creating a ViewModel in a View,
+			label={lst:creatingAViewModelInView}]
+    val context = LocalContext.current
+    val projectViewModel: ProjectViewModel = viewModel(
+        factory = ProjectViewModelFactory(context.applicationContext as Application)
+    )
+\end{lstlisting}
+
+Since the form will have to insert the user's input into a database, the ProjectViewModel is created using the code shown in \ref{lst:creatingAViewModelInView}. ViewModels require the context of the application, so the context variable is created using the LocalContext.current to get the context of the current view. A \verb|ProjectViewModel| defined in the \verb|viewmodel/ProjectViewModel.kt| class is created using the ProjectViewModelFactory method with the context variable. The resulting projectViewModel value can now be used in other parts of the view to make use of the various CRUD operations in that view model. 
+
+\begin{lstlisting}[numbers=none, 
+			caption=Tracking State Changes,
+			label={lst:trackState}]
+ //remember the values in the form
+    var projectName by remember { mutableStateOf("") }
+    val projectTypeState = remember { mutableStateOf("")}
+    val difficulty = remember { mutableStateOf("") }
+    val dateValue = remember { mutableStateOf("") }
+    val UserID = remember { mutableStateOf(0)}
+    val UserIDString = remember { mutableStateOf("")}
+\end{lstlisting}
+Since JetPack Compose makes use of states to track changes in values of the various fields in our form, a number of mutable states need to be created using the \verb|remember{ mutableStateOf("") }| function. These can then be passed to the values of textFields, dropDowns and radio buttons and are frequently manipulated using the \verb|onValueChange| property of those fields using code like \verb|onValueChange = { myState.value = it }|, which can be used to tell the field to automatically update the value property of the state when the user enters input in that particular field. There should be at least one state per input field in the form and certain inputs may make use of more if the input field has to trigger a dialog box or a dropdown menu. The states used to track the values in the AddProjectForm are shown in Listing \ref{lst:trackState}
+
+\subsubsection{Rows and Columns}
+Now that the initial discussion on state and using viewmodels in a view has been provided, the process of creating the form and the elements in it will be discussed. In JetPack Compose there are a variety of containers to organize elements on a screen, but the two most common are \verb|Column()| and \verb|Row()|. Columns arrange elements vertically and rows arrange elements horizontally. Both Column and Row take a variety of optional arguments that can be used to further customize the layout of the composable function. In this example form, I have stored all of the elements in a Column that fills up the width of the screen using the \verb|Modifier.fillMaxWidth()| property with the exception of a left and right margin set to 30.dp using the \verb|Modifier.padding(start=30.dp, end=30.dp)| property. 
+At the top of the form, which is the first element in the Column composable, the navigation elements are stored in a Row() where buttons to go to the main screen, about us screen and the add a project screen. These buttons are placed immediately after each other, so they are placed touching each other from right to left. 
+
+\subsubsection{Spacers}
+
+\begin{lstlisting}[numbers=none, 
+			caption=Using Spacers,
+			label={lst:spacer}]
+ Spacer(modifier = Modifier.padding(top = 30.dp))
+\end{lstlisting}
+In order to create white space between various elements a spacer can be used. A spacer takes a modifier argument which can be set to the Modifier object with a property. In Listing \ref{lst:spacer} the spacer has a top margin of 30.dp which is used to provide 30.dp units of white space between the navigation and the next element. 
+\sububsection{Text}
+A title can be created for the form using a \verb|Text()| element. There are several properties that can be set for the text property which can used to style the text, but at a minimum it requires an argument of text which is the string displayed for the text. 
+\subsubsection{Centering}
+\begin{lstlisting}[numbers=none, 
+			caption=Centered Text,
+			label={lst:centeredTitle}]
+  //Create a heading
+        Row(
+            Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+
+        ) {
+            Text(text = "Add a Project")
+        }
+
+\end{lstlisting}
+If we simply place the text element in the column, we will find the text element is left aligned with a padding of 30.dp. Generally, a centered title is more visually appealing, so we can create a Row container and make use of the Modifier.fillMaxWidth() property and the horizontalArrangement = Arrangement.Center property to create a row where all items in that row are center aligned. Then the text for our title can be stored inside this Row container as shown in Listing \ref{lst:centeredTitle}. 
+
+\subsubsection{TextField Inputs}
+
+\begin{lstlisting}[numbers=none, 
+			caption=TextField inputs,
+			label={lst:textField}]
+  TextField(value = projectName,
+                onValueChange = { projectName = it }
+            )
+\end{lstlisting}
+
+Now that a title has been created, we can start creating the various input types needed for our form. The first input in this form is the text input field used to get the name of the project. Generally forms make use of a label before the input field, so I opted to create a Row container for each input that consisted of a \verb|Text| field with the name of the field, a spacer with a padding of 10.dp and then the input type of interest. Since project name is a text field, the TextField composable is used as shown in Listing \ref{lst:textField}. TextFields have at least two arguments, a value argument which points to the state used to track this field and the onValueChange which is used to update the value of that state. 
+
+\subsubsection{RadioButtons} 
+
+\begin{lstlisting}[numbers=none, 
+			caption=Radiobutton inputs,
+			label={lst:radioButton}]
+@Composable
+fun GroupedRadioButton(mItems: List<String>, radioState: MutableState<String>) {
+
+    Row(Modifier
+        .fillMaxWidth()) {
+        mItems.forEach { mItem ->
+                RadioButton(
+                    selected = radioState.value == mItem,
+                    onClick = { radioState.value = mItem },
+                    enabled = true,
+                    colors = RadioButtonDefaults.colors(selectedColor = Color.Magenta)
+                )
+            Text(text = mItem, modifier = Modifier.padding(start = 8.dp))
+        }
+    }
+}
+            )
+\end{lstlisting}
+The second input type used in the form is the radio button which is used to specify the perceived difficulty of the project. Since there were more than a few lines of code to create a radio button, a GroupedRadioButton function was created to store a list of strings for the various options to display and the mutableState used to track the value of the radiobutton after any changes. The GroupedRadioButton composable function is shown in Listing \ref{lst:radioButton}
+
+\begin{lstlisting}[numbers=none, 
+			caption=DropDown box,
+			label={lst:projectDropDown}]
+@Composable
+fun ProjectTypeDropdown(projectTypeState: MutableState<String>) {
+    var expanded by remember { mutableStateOf(false) }
+    val items = listOf("Personal Project", "School Project", "Work Project")
+    var selectedIndex by remember { mutableStateOf(0) }
+    Box(modifier = Modifier.wrapContentSize(Alignment.TopStart)) {
+        Text(items[selectedIndex],modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = { expanded = true })
+            .background(
+                Color.LightGray
+            )
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    Color.LightGray
+                )
+        ) {
+            items.forEachIndexed { index, s ->
+                DropdownMenuItem(onClick = {
+                    selectedIndex = index
+                    expanded = false
+                    projectTypeState.value = items[selectedIndex]
+                }) {
+                    Text(text = s)
+                }
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsubsection{Dropdown Boxes}
+A dropdown or select box can be used to select one option from a list of options, much like radio buttons. The advantage to dropdown boxes is that they make better use of space and can store more options on a screen through the ability to scroll down a list of different options, whereas  all radio buttons have to be displayed at once which limits their use to cases where only a few options are available. In this form there are two dropdown boxes, one is used to select the type of project, personal, school or work and the other is to select the name of a user and it returns the id fo the user. The biggest difference in the implementation of these two drop downs is that the UserDropDown box creates a TeamMemberViewModel and uses it to populate a list of TeamMember objects to get the names and ids of all team members. Since a query to the database is used and there could be some delay, conditional logic has to be used for the currently selected value to be an empty string if  the list is empty. Otherwise the application will crash due to an invalid index in the list. In Listing \ref{lst:projectDropDown}, the code to create the project dropdown box is shown. In this function, three mutable states are used. First the expanded mutable state tracks a boolean to see if the dropdown is open or not and is set to true when clicked. The second mutable state, selectedIndex, is used to track an integer equal to the index of the currently selected list item in the dropdown box. The last mutable state is projectTypeState which is the state passed to the function and is used to track the current string value of the item at the selectedIndex. A box container containing a single text element is used to define the appearance of the dropdown field when it is closed. The \verb|DropdownMenu| container is used to define the appearance of the dropdown menu when it is clicked and the list of all dropdown items is shown. Inside of this function, the list items are looped and \verb|DropdownMenuItem|s are created from that list each with an \verb|onClick| method which is used to set the values of the various states needed in the Dropdown function. A text element inside of the DropdownMenuItem is used to set the text displayed for that item in the dropdown menu. 
+
+\subsubsection{DatePicker}
+The last type of input field in the AddProjectView is the DatePicker input. JetPack Compose does not natively support a DatePicker, but it can be implemented using a third party library such as Compose Material Dialogs \cite{GitHubComposeMaterialDialogs}.  
+
+\begin{lstlisting}[numbers=none, 
+			caption=Compose Material Dialogs Dependencies,
+			label={lst:composeMaterialDialogDependencies}]
+  implementation "io.github.vanpra.compose-material-dialogs:datetime:0.6.0"
+  implementation "io.github.vanpra.compose-material-dialogs:color:0.6.0"
+
+\end{lstlisting}
+To use this library the dependencies shown in Listing \ref{lst:composeMaterialDialogDependencies} need to be added to the \verb|app/build.gradle| file. 
+
+\begin{lstlisting}[numbers=none, 
+			caption=DatePicker ,
+			label={lst:datePicker}]
+  @Composable
+fun showDatePicker(DateValue: MutableState<String>){
+
+    val dialogState = rememberMaterialDialogState()
+    val textState = remember { mutableStateOf(TextFieldValue()) }
+    val dialog = MaterialDialog(
+        dialogState = dialogState,
+        buttons = {
+            positiveButton("Ok")
+            negativeButton("Cancel")
+        }){
+        datepicker { date ->
+            val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+            val formattedDate = date.format(formatter)
+            textState.value = TextFieldValue(formattedDate)
+            DateValue.value = formattedDate
+        }
+    }
+        Column(modifier = Modifier.padding(16.dp)) {
+        ReadonlyTextField(
+            value = textState.value,
+            onValueChange = { textState.value = it },
+            onClick = {
+                dialogState.show()
+            },
+
+            label = {
+                Text(text = "Date")
+            }
+        )
+    }
+\end{lstlisting}
+
+The DatePicker function is created using the code shown in Listing \ref{lst:datePicker}. \cite{GrobmannDatePicker}. This code basically creates a dialog box using the MaterialDialog function and then a datepicker function is used to take the date selected and convert it to a string. After the dialog box has been created, the dialog state's  \verb|show| method needs to be called with an onclick event to be able to show the dialog box. 
+\begin{lstlisting}[numbers=none, 
+			caption=ReadonlyTextField ,
+			label={lst:readonlytextfield}]
+@Composable
+fun ReadonlyTextField(
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    label: @Composable () -> Unit
+) {
+    Box {
+        TextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = modifier,
+            label = label
+        )
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .alpha(0f)
+                .clickable(onClick = onClick),
+        )
+    }
+}
+\end{lstlisting}
+ In this case a custom textField class, called \verb|ReadonlyTextField| shown in Listing \ref{lst:readonlytextfield} is used to create a clickable text element that can show the resulting date text, but does not trigger the keyboard. In this class a box element with a text field and a box element over top of the text field is used to prevent triggering the keyboard, so it has the ability to behave like a button, but also dynamically updates the text value when the datePicker is closed \cite{GrobmannDatePicker}. 
+
+\subsubsection{Submit Button}
+\begin{lstlisting}[numbers=none, 
+			caption=Submit Button ,
+			label={lst:submitButton}]
+ Row(horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.padding(start = 120.dp, end = 120.dp)) {
+            Button(onClick = { submit(projectName, difficulty.value,
+                                     projectTypeState.value, dateValue.value,
+                                     UserID.value, projectViewModel) }){
+                Text("Submit")
+            }
+        }
+\end{lstlisting}
+The last element of the AddProjectView is the submit button. This is created using a \verb|Button| with an onClick argument set to the function used to submit the form data. The label for the button is set by storing a \verb|Text| element inside of the button. The code used to create the submit button is shown in \ref{st:submitButton}
+\subsubsection{Submit Button}
+\begin{lstlisting}[numbers=none, 
+			caption=Submit Function ,
+			label={lst:submitFunction}]
+ fun submit(projectName: String, difficulty: String,
+           projectType:String, dateValue:String, UserID: Int, projectViewModel: ProjectViewModel ){
+
+    val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+    val date: LocalDate = LocalDate.parse(dateValue, formatter)
+    var project = ProjectEntity(1, projectName, difficulty, projectType, date, UserID)
+    projectViewModel.addProject(project)
+}
+\end{lstlisting}
+The submit function simply takes the value for each of the mutableStates that was tracking an input field and then viewModel used to insert the data into the database. The various values are used to create a ProjectEntity and then the ProjectViewModel's addProject method is used to add the entity to the database. The code used to create the submit function is shown in Listing \ref{lst:submitFunction}
 
 \section{Documenting with Dokka}
 test
@@ -383,4 +632,4 @@ test
 \RaggedRight
 \bibliography{references}{}
  \bibliographystyle{elsarticle-num} 
-\end{document}
+\end{document} 

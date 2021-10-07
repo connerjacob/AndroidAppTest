@@ -54,11 +54,29 @@ Android,
   2021-9-27.
 \newline\urlprefix\url{https://web.archive.org/web/20210917234748/https://developer.android.com/training/data-storage/room/referencing-data}
 
+\bibitem{LuaSoftwareLocalDateTime}
+LuaSoftwareCode,
+  \href{https://code.luasoftware.com/tutorials/android/localdatetime-converter-for-room/}{Java.time.localdatetime
+  converter for room (kotlin)}, accessed on 2021-9-28.
+\newline\urlprefix\url{https://code.luasoftware.com/tutorials/android/localdatetime-converter-for-room/}
+
 \bibitem{DateTimeFormatterDocs}
 Oracle,
   \href{https://web.archive.org/web/20210813002023/https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html}{Class
   datetimeformatter}, accessed on 2021-9-27.
 \newline\urlprefix\url{https://web.archive.org/web/20210813002023/https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html}
+
+\bibitem{AndroidDateTimeFormatterDocs}
+Android,
+  \href{https://web.archive.org/web/20200820054416/https://developer.android.com/reference/kotlin/java/time/format/DateTimeFormatter}{Datetimeformatter},
+  accessed on 2021-9-27.
+\newline\urlprefix\url{https://web.archive.org/web/20200820054416/https://developer.android.com/reference/kotlin/java/time/format/DateTimeFormatter}
+
+\bibitem{StackOverflowLocalDate}
+StackOverflow,
+  \href{https://web.archive.org/web/20161130210232/http://stackoverflow.com/questions/28177370/how-to-format-localdate-to-string}{How
+  to format localdate to string?}, accessed on 2021-9-28.
+\newline\urlprefix\url{https://web.archive.org/web/20161130210232/http://stackoverflow.com/questions/28177370/how-to-format-localdate-to-string}
 
 \bibitem{AndroidTestingFundamentals}
 Android,
@@ -88,5 +106,16 @@ StackOverflow,
   \href{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}{How
   to load image from url in jetpack compose?}, accessed on 2021-9-28.
 \newline\urlprefix\url{https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}
+
+\bibitem{GitHubComposeMaterialDialogs}
+P.~Maganti, \href{https://github.com/vanpra/compose-material-dialogs}{Compose
+  material dialogs}, accessed on 2021-10-7.
+\newline\urlprefix\url{https://github.com/vanpra/compose-material-dialogs}
+
+\bibitem{GrobmannDatePicker}
+M.~Grobmann,
+  \href{https://caelis.medium.com/jetpack-compose-datepicker-textfield-39808e42646a}{Jetpack
+  compose: Datepicker-textfield}, accessed on 2021-10-7.
+\newline\urlprefix\url{https://caelis.medium.com/jetpack-compose-datepicker-textfield-39808e42646a}
 
 \end{thebibliography}

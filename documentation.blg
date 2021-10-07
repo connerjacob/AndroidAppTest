@@ -3,9 +3,25 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: documentation.aux
 The style file: elsarticle-num.bst
 Database file #1: references.bib
-I was expecting a `,' or a `)'---line 107 of file references.bib
+I was expecting a `,' or a `)'---line 114 of file references.bib
  :  bdsk-url-1 = {https://stackoverflow.com/questions/66957702/how-to-load-image-from-url-in-jetpack-compose}
  :                                                                                                           }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 122 of file references.bib
+ :  bdsk-url-1 = {https://stackoverflow.com/questions/28177370/how-to-format-localdate-to-string}
+ :                                                                                               }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 130 of file references.bib
+ :  bdsk-url-1 = {https://code.luasoftware.com/tutorials/android/localdatetime-converter-for-room/}
+ :                                                                                                 }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 138 of file references.bib
+ :  bdsk-url-1 = {https://github.com/vanpra/compose-material-dialogs}
+ :                                                                   }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `)'---line 146 of file references.bib
+ :  bdsk-url-1 = {hhttps://caelis.medium.com/jetpack-compose-datepicker-textfield-39808e42646a}
+ :                                                                                             }
 I'm skipping whatever remains of this entry
 Warning--empty year in GoogleRoomDB
 Warning--empty year in MakeItEasyRoom1
@@ -15,51 +31,56 @@ Warning--empty year in kotlinCoroutines
 Warning--empty year in roomDBMethods
 Warning--empty year in SqliteDataTypes
 Warning--empty year in RoomDBTypeConverters
+Warning--empty year in LuaSoftwareLocalDateTime
 Warning--empty year in DateTimeFormatterDocs
+Warning--empty year in AndroidDateTimeFormatterDocs
+Warning--empty year in StackOverflowLocalDate
 Warning--empty year in AndroidTestingFundamentals
 Warning--empty year in SimplifiedCodingRoomTesting
 Warning--empty year in mediumJetpackNavigation
 Warning--empty year in NavigationCodeLab
 Warning--empty year in StackOverflowCoil
-You've used 14 entries,
+Warning--empty year in GitHubComposeMaterialDialogs
+Warning--empty year in GrobmannDatePicker
+You've used 19 entries,
             2952 wiz_defined-function locations,
-            737 strings with 7453 characters,
-and the built_in function-call counts, 3044 in all, are:
-= -- 266
-> -- 56
+            761 strings with 8367 characters,
+and the built_in function-call counts, 4114 in all, are:
+= -- 361
+> -- 76
 < -- 0
-+ -- 28
-- -- 14
-* -- 170
-:= -- 391
-add.period$ -- 14
-call.type$ -- 14
-change.case$ -- 28
++ -- 38
+- -- 19
+* -- 230
+:= -- 521
+add.period$ -- 19
+call.type$ -- 19
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 126
-empty$ -- 421
-format.name$ -- 14
-if$ -- 827
+cite$ -- 38
+duplicate$ -- 171
+empty$ -- 571
+format.name$ -- 19
+if$ -- 1122
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 19
 missing$ -- 0
-newline$ -- 64
-num.names$ -- 14
-pop$ -- 154
+newline$ -- 84
+num.names$ -- 19
+pop$ -- 209
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 195
+skip$ -- 265
 stack$ -- 0
-substring$ -- 28
-swap$ -- 14
+substring$ -- 38
+swap$ -- 19
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 14
-while$ -- 14
-width$ -- 16
-write$ -- 119
-(There was 1 error message)
+warning$ -- 19
+while$ -- 19
+width$ -- 21
+write$ -- 159
+(There were 5 error messages)
